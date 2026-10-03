@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Learn Saigon Vietnamese in small online classes with Kiều. Speak, read and write for real life in Vietnam. Free 30-minute trial.">
+<meta property="og:title" content="Hẻm Talk · Saigon Vietnamese with Kiều">
+<meta property="og:description" content="Learn Saigon Vietnamese in small online classes with Kiều. Speak, read and write for real life in Vietnam. Free 30-minute trial.">
+<meta property="og:type" content="website">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Hẻm Talk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Patrick+Hand&display=swap">
+<style>
+/* Layout: a Saigon alley you walk down. Shop signboard hero → phrase ticker like a moving banner → menu-board course → house-number roadmap → flip-card mini library → social "wall" → teacher polaroid → FAQ → bottom signboard with contacts. Day = sun-bleached plaster; dark = night-market neon. */
+:root{
+  --plaster:#F4ECDD; --plaster-2:#EADFCB; --wall:#E3D4BA; --ink:#1B1F1D; --ink-soft:#4E5551;
+  --sign-red:#D3261C; --sign-yellow:#FFC83A; --plate-blue:#1D4E9E; --green:#1F6B4F; --paper:#FFFBF2;
+  --on-red:#FFF4D6; --line:#CDBB9C; --shadow:rgba(27,31,29,.18);
+  --display:"Anton","Be Vietnam Pro",Impact,"Arial Narrow",sans-serif;
+  --body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --hand:"Patrick Hand","Comic Sans MS","Be Vietnam Pro",cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --plaster:#121513; --plaster-2:#1A1F1C; --wall:#232A26; --ink:#F4ECDD; --ink-soft:#B4BAB4;
+  --sign-red:#FF4A3D; --sign-yellow:#FFD45C; --plate-blue:#5C8EFF; --green:#4CC79A; --paper:#1E2420;
+  --on-red:#1B0E0C; --line:#36403A; --shadow:rgba(0,0,0,.5); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --plaster:#121513; --plaster-2:#1A1F1C; --wall:#232A26; --ink:#F4ECDD; --ink-soft:#B4BAB4;
+  --sign-red:#FF4A3D; --sign-yellow:#FFD45C; --plate-blue:#5C8EFF; --green:#4CC79A; --paper:#1E2420;
+  --on-red:#1B0E0C; --line:#36403A; --shadow:rgba(0,0,0,.5); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--plaster);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:16px}
+h1,h2,h3{margin:0;line-height:1.05;text-wrap:balance;color:var(--ink)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,6vw,3.6rem);letter-spacing:.01em;text-transform:uppercase}
+h3{font-family:var(--body);font-weight:800;font-size:1.15rem;line-height:1.25}
+p{margin:0;max-width:64ch}
+a{color:inherit}
+.hand{font-family:var(--hand);font-size:1.25rem;line-height:1.3;color:var(--sign-red)}
+.kicker{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--ink-soft)}
+section{padding-block:72px 8px;display:flex;flex-direction:column;gap:24px}
+[id]{scroll-margin-top:70px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--ink);color:var(--plaster)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.bar .mark{font-family:var(--display);font-size:1.35rem;letter-spacing:.04em;color:var(--sign-yellow);text-decoration:none;white-space:nowrap}
+.bar nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.bar nav a{flex:none;font-size:.84rem;font-weight:700;color:var(--plaster);opacity:.8;text-decoration:none;padding:6px 10px;border-radius:6px}
+.bar nav a:hover{opacity:1;background:rgba(255,255,255,.08)}
+.bar .go{flex:none;background:var(--sign-red);color:var(--on-red);font-weight:800;font-size:.84rem;text-decoration:none;padding:8px 12px;border-radius:6px;white-space:nowrap}
+
+/* hero = shop signboard */
+.hero{padding-block:44px 30px;display:flex;flex-direction:column;gap:22px}
+.signboard{background:var(--sign-red);color:var(--sign-yellow);border-radius:6px;padding:clamp(18px,4vw,34px);box-shadow:0 0 0 6px var(--ink),0 22px 40px -18px var(--shadow);position:relative;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}
+.signboard::before,.signboard::after{content:"";position:absolute;top:-34px;width:6px;height:28px;background:var(--ink)}
+.signboard::before{left:14%}.signboard::after{right:14%}
+.signboard .sb-top{font-weight:800;font-size:clamp(.78rem,1.8vw,.95rem);letter-spacing:.14em;text-transform:uppercase;color:var(--on-red)}
+.signboard h1{font-family:var(--display);font-weight:400;color:var(--sign-yellow);font-size:clamp(3.6rem,14vw,10.5rem);line-height:1;padding-top:.08em;white-space:nowrap;letter-spacing:.01em;text-shadow:4px 4px 0 rgba(0,0,0,.22)}
+.signboard .sb-lines{display:flex;flex-direction:column;gap:2px;font-weight:700;color:var(--on-red);font-size:clamp(.95rem,2.2vw,1.15rem)}
+.signboard .sb-lines b{color:var(--sign-yellow)}
+.phone{font-family:var(--display);font-size:clamp(1.1rem,3vw,1.6rem);color:var(--sign-yellow);letter-spacing:.03em}
+.plate{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;background:var(--plate-blue);color:#FFFFFF;border:3px solid #FFFFFF;outline:3px solid var(--plate-blue);border-radius:4px;padding:8px 14px;min-width:84px;text-align:center}
+.plate .pn{font-family:var(--display);font-size:2.2rem;line-height:1}
+.plate .pl{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.hero-under{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+.hero-under .lede{font-size:clamp(1.05rem,2.3vw,1.25rem);color:var(--ink)}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:800;font-size:1rem;text-decoration:none;border-radius:8px;padding:13px 18px;border:3px solid var(--ink);cursor:pointer;box-shadow:4px 4px 0 var(--ink);transition:transform .12s ease, box-shadow .12s ease}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.btn.red{background:var(--sign-red);color:var(--on-red)}
+.btn.yellow{background:var(--sign-yellow);color:#1B1F1D}
+.btn.plain{background:var(--paper);color:var(--ink)}
+.chat{background:var(--paper);border:3px solid var(--ink);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:6px 6px 0 var(--ink)}
+.chat .who{font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.msg{max-width:90%;padding:8px 12px;border-radius:12px;font-weight:700;line-height:1.3}
+.msg small{display:block;font-weight:500;font-size:.8rem;opacity:.8}
+.msg.l{background:var(--plaster-2);align-self:flex-start;border-bottom-left-radius:3px}
+.msg.r{background:var(--green);color:#FFFBF2;align-self:flex-end;border-bottom-right-radius:3px;text-align:right}
+
+/* ticker */
+.ticker{background:var(--sign-yellow);color:#1B1F1D;border-block:4px solid var(--ink);overflow:hidden;margin-top:34px}
+.track{display:flex;gap:42px;width:max-content;padding-block:12px;animation:roll 38s linear infinite}
+.track span{font-weight:800;white-space:nowrap;font-size:1.05rem}
+.track span i{font-style:normal;font-weight:500;opacity:.75;margin-left:6px}
+.track span::after{content:"✦";margin-left:42px;color:#D3261C}
+@keyframes roll{to{transform:translateX(-50%)}}
+.ticker:hover .track{animation-play-state:paused}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sign{background:var(--paper);border:3px solid var(--ink);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:10px;box-shadow:5px 5px 0 var(--ink);min-width:0}
+.sign .vn{font-family:var(--display);font-size:2rem;line-height:1;color:var(--sign-red);text-transform:uppercase}
+.sign:nth-child(2) .vn{color:var(--plate-blue)}
+.sign:nth-child(3) .vn{color:var(--green)}
+.sign p{font-size:.97rem;color:var(--ink-soft)}
+
+/* menu board */
+.menu{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.board{background:#1F2B25;color:#F4ECDD;border:10px solid #6B4A2B;border-radius:8px;padding:clamp(18px,3vw,30px);box-shadow:0 18px 34px -16px var(--shadow)}
+.board h3{font-family:var(--display);font-weight:400;font-size:2.2rem;color:#FFD45C;letter-spacing:.02em;text-transform:uppercase}
+.board .sub{font-family:var(--hand);font-size:1.25rem;color:#F4ECDD;opacity:.85}
+.items{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column}
+.items li{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px dashed rgba(244,236,221,.25);font-size:1.02rem}
+.items li:last-child{border-bottom:0}
+.items .dots{flex:1;border-bottom:2px dotted rgba(244,236,221,.35);transform:translateY(-4px);min-width:20px}
+.items .val{font-family:var(--hand);font-size:1.25rem;color:#FFD45C;white-space:nowrap}
+.items .free{color:#FF7A6E}
+.outcomes{display:flex;flex-direction:column;gap:12px}
+.out{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:3px solid var(--ink);border-radius:10px;padding:12px 14px}
+.out .tick{flex:none;width:26px;height:26px;border-radius:50%;background:var(--green);color:#FFFBF2;display:grid;place-items:center;font-weight:800;font-size:.85rem}
+
+/* roadmap with house plates */
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stop{background:var(--paper);border:3px solid var(--ink);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.stop .plate{align-self:flex-start}
+.stop p{font-size:.94rem;color:var(--ink-soft)}
+.alley{height:10px;border-radius:99px;background:repeating-linear-gradient(90deg,var(--ink) 0 26px,transparent 26px 44px);opacity:.35}
+
+/* library */
+.lib{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.flip{perspective:1000px;background:none;border:0;padding:0;cursor:pointer;text-align:left;font:inherit;color:inherit;min-height:200px}
+.flip .in{position:relative;width:100%;height:100%;min-height:200px;transition:transform .5s ease;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:3px solid var(--ink);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px;box-shadow:5px 5px 0 var(--ink)}
+.front{background:var(--paper)}
+.front .ph{font-family:var(--display);font-size:clamp(1.9rem,4vw,2.4rem);line-height:1.02;color:var(--ink);text-transform:none}
+.front .tag{margin-top:auto;font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sign-red)}
+.back{background:var(--plate-blue);color:#FFFFFF;transform:rotateY(180deg)}
+.back .mean{font-weight:800;font-size:1.15rem}
+.back p{font-size:.94rem;color:#E6EEFF}
+.back .ex{font-family:var(--hand);font-size:1.2rem;color:#FFD45C;margin-top:auto}
+.lib-cta{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:var(--sign-yellow);color:#1B1F1D;border:3px solid var(--ink);border-radius:12px;padding:18px 20px}
+.lib-cta p{font-weight:700;color:#1B1F1D}
+
+/* social wall */
+.wall{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tile{border:3px solid var(--ink);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);background:var(--paper);box-shadow:5px 5px 0 var(--ink);min-width:0;transition:transform .12s ease}
+.tile:hover{transform:translate(-2px,-2px)}
+.tile .pf{font-family:var(--display);font-size:1.7rem;line-height:1;text-transform:uppercase}
+.tile .handle{font-weight:800;font-size:.95rem;word-break:break-word}
+.tile .series{font-family:var(--hand);font-size:1.15rem;line-height:1.25}
+.tile .soon{margin-top:auto;align-self:flex-start;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border:2px solid var(--ink);border-radius:99px;padding:2px 8px}
+.t1{background:#1B1F1D;color:#F4ECDD}.t1 .soon{border-color:#F4ECDD}.t1 .series{color:#FFD45C}
+.t2{background:var(--paper)}.t2 .series{color:var(--plate-blue)}
+.t3{background:var(--sign-red);color:var(--on-red)}.t3 .soon{border-color:var(--on-red)}.t3 .series{color:var(--sign-yellow)}
+.t4{background:var(--sign-yellow);color:#1B1F1D}.t4 .soon{border-color:#1B1F1D}.t4 .series{color:#D3261C}
+.episodes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ep{background:var(--paper);border:3px dashed var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.ep .no{font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sign-red)}
+.ep .t{font-weight:800}
+.ep p{font-size:.92rem;color:var(--ink-soft)}
+
+/* teacher */
+.teacher{display:grid;grid-template-columns:260px 1fr;gap:34px;align-items:center}
+.polaroid{background:#FFFBF2;padding:12px 12px 46px;border:1px solid var(--line);box-shadow:0 14px 28px -12px var(--shadow);transform:rotate(-3deg);position:relative;max-width:260px}
+.polaroid::before{content:"";position:absolute;top:-14px;left:50%;width:90px;height:26px;transform:translateX(-50%) rotate(2deg);background:rgba(255,200,58,.75)}
+.polaroid .pic{aspect-ratio:1/1;max-width:100%;background:linear-gradient(160deg,#1D4E9E,#1B1F1D);display:grid;place-items:center;color:#FFC83A;font-family:var(--display);font-size:5rem}
+.polaroid .cap{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-family:var(--hand);font-size:1.2rem;color:#1B1F1D}
+.teacher .bio{display:flex;flex-direction:column;gap:14px}
+.teacher .bio p{font-size:1.04rem}
+
+/* faq */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+details{background:var(--paper);border:3px solid var(--ink);border-radius:10px;padding:2px 16px}
+summary{cursor:pointer;font-weight:800;padding:12px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);font-size:1.4rem;line-height:1;color:var(--sign-red)}
+details[open] summary::after{content:"–"}
+details p{padding-bottom:14px;font-size:.95rem;color:var(--ink-soft)}
+
+/* contact signboard */
+.contact{margin-top:80px;background:var(--ink);color:var(--plaster);padding-block:56px 40px}
+.contact h2{color:var(--sign-yellow)}
+.contact .lede{color:var(--plaster);opacity:.85;margin-top:8px}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.cbox{border:3px solid var(--sign-yellow);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.cbox .k{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--sign-yellow)}
+.cbox .v{font-family:var(--display);font-size:1.4rem;letter-spacing:.02em;color:var(--plaster);word-break:break-word;user-select:all}
+.cbox button{align-self:flex-start;font:800 .78rem var(--body);color:var(--plaster);background:transparent;border:2px solid var(--plaster);border-radius:99px;padding:4px 12px;cursor:pointer}
+.foot{margin-top:40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.85rem;opacity:.7}
+:focus-visible{outline:3px solid var(--plate-blue);outline-offset:3px}
+
+@media (max-width:900px){
+  .why,.road,.lib,.episodes{grid-template-columns:1fr 1fr}
+  .wall{grid-template-columns:1fr 1fr}
+  .menu,.hero-under,.teacher,.faq,.contact-grid{grid-template-columns:1fr}
+  .signboard{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .why,.road,.lib,.episodes,.wall{grid-template-columns:1fr}
+  .bar nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.track{flex-wrap:wrap;width:auto}}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">HẺM TALK</a>
+    <nav aria-label="Main"><a href="#course">Course</a><a href="#library">Free lessons</a><a href="#watch">Watch</a><a href="#kieu">Kiều</a><a href="#faq">FAQ</a></nav>
+    <a class="go" href="#contact">Free trial</a>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap hero">
+  <div class="signboard" role="img" aria-label="Shop sign: Hẻm Talk, Saigon Vietnamese, small online classes, free trial lesson">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span class="sb-top">Chuyên dạy tiếng Việt · Giọng Sài Gòn</span>
+      <h1>HẺM TALK</h1>
+      <div class="sb-lines">
+        <span>Lớp nhỏ online · Nói, đọc, viết · <b>Học thử miễn phí</b></span>
+        <span class="phone">with Kiều · Học Tiếng Việt cùng Kiều</span>
+      </div>
+    </div>
+    <div class="plate" aria-hidden="true"><span class="pl">Hẻm</span><span class="pn">101</span><span class="pl">Sài Gòn</span></div>
+  </div>
+
+  <div class="hero-under">
+    <div>
+      <p class="hand">Vietnamese from the alleys of Saigon.</p>
+      <p class="lede" style="margin-top:8px">You live here. You hear Vietnamese every day in your hẻm, at the market, in the Grab. Now learn to answer back, in small online classes built around your real life.</p>
+      <div class="ctas">
+        <a class="btn red" href="#contact">Book a free 30-min trial</a>
+        <a class="btn plain" href="#library">Try a free lesson</a>
+      </div>
+    </div>
+    <div class="chat" aria-label="Example conversation at the market">
+      <span class="who">At the market</span>
+      <div class="msg l">Xoài nè em, ngon lắm!<small>Mangoes here, very good!</small></div>
+      <div class="msg r">Dạ, bao nhiêu một ký vậy chị?<small>How much per kilo?</small></div>
+      <div class="msg l">Năm chục.<small>Fifty thousand.</small></div>
+      <div class="msg r">Mắc quá! Bớt chút đi chị.<small>Too pricey! A little discount?</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="ticker" aria-label="Everyday Saigon phrases">
+  <div class="track">
+    <span>Ơi!<i>Hey!</i></span><span>Dạ<i>Yes (polite)</i></span><span>Bớt chút đi chị<i>A little discount?</i></span><span>Quẹo trái<i>Turn left</i></span><span>Ăn cơm chưa?<i>Eaten yet?</i></span><span>Nóng quá ha!<i>So hot, huh!</i></span><span>Một ly cà phê sữa đá<i>One iced milk coffee</i></span><span>Hẹn gặp lại<i>See you</i></span>
+    <span aria-hidden="true">Ơi!<i>Hey!</i></span><span aria-hidden="true">Dạ<i>Yes (polite)</i></span><span aria-hidden="true">Bớt chút đi chị<i>A little discount?</i></span><span aria-hidden="true">Quẹo trái<i>Turn left</i></span><span aria-hidden="true">Ăn cơm chưa?<i>Eaten yet?</i></span><span aria-hidden="true">Nóng quá ha!<i>So hot, huh!</i></span><span aria-hidden="true">Một ly cà phê sữa đá<i>One iced milk coffee</i></span><span aria-hidden="true">Hẹn gặp lại<i>See you</i></span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="why">
+  <span class="kicker">Why Hẻm Talk</span>
+  <h2>Three house rules</h2>
+  <div class="why">
+    <div class="sign"><span class="vn">Đời thật</span><h3>Real life first</h3><p>We learn what people say in the hẻm, at the market and at the office. Not stiff lines from an old textbook.</p></div>
+    <div class="sign"><span class="vn">Thanh trước</span><h3>Tone before grammar</h3><p>Wrong grammar, people still understand. Wrong tone, you said another word. We fix your tones from day one, one person at a time.</p></div>
+    <div class="sign"><span class="vn">Dám nói</span><h3>Confidence first</h3><p>Every class ends with role-play. You leave having actually spoken, not just listened.</p></div>
+  </div>
+</section>
+
+<section id="course">
+  <span class="kicker">The course</span>
+  <h2>Today's menu: Foundation</h2>
+  <div class="menu">
+    <div class="board">
+      <h3>Thực đơn · Menu</h3>
+      <span class="sub">From zero to everyday Vietnamese</span>
+      <ul class="items">
+        <li>Live online lessons<span class="dots"></span><span class="val">30 buổi</span></li>
+        <li>Each lesson<span class="dots"></span><span class="val">90 phút</span></li>
+        <li>Rhythm<span class="dots"></span><span class="val">2 tối / tuần</span></li>
+        <li>Class size<span class="dots"></span><span class="val">2–4 người</span></li>
+        <li>Accent<span class="dots"></span><span class="val">Sài Gòn</span></li>
+        <li>Slides + practice app<span class="dots"></span><span class="val">mỗi buổi</span></li>
+        <li>Checkpoints + certificate<span class="dots"></span><span class="val">4 + 1</span></li>
+        <li>Trial lesson, 30 min<span class="dots"></span><span class="val free">MIỄN PHÍ</span></li>
+      </ul>
+      <p class="sub" style="margin-top:14px">Fees: message Kiều. 1-on-1 also available.</p>
+    </div>
+    <div class="outcomes">
+      <h3>After 30 lessons you can</h3>
+      <div class="out"><span class="tick">1</span><span>Greet anyone with the right word: anh, chị, em, cô, chú.</span></div>
+      <div class="out"><span class="tick">2</span><span>Read any Vietnamese word out loud and type with tone marks.</span></div>
+      <div class="out"><span class="tick">3</span><span>Shop at the market, order food, take a Grab, talk to your landlord.</span></div>
+      <div class="out"><span class="tick">4</span><span>Send clear Zalo messages and fill in simple forms.</span></div>
+      <div class="out"><span class="tick">5</span><span>Talk for 3 minutes about your life in Vietnam.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <span class="kicker">The route</span>
+  <h2>Four stops down the hẻm</h2>
+  <div class="alley" aria-hidden="true"></div>
+  <div class="road">
+    <div class="stop"><span class="plate"><span class="pl">Số</span><span class="pn">1</span><span class="pl">Buổi 1–8</span></span><h3>Sounds &amp; letters</h3><p>Five Saigon tones, the alphabet, greetings, numbers, money.</p></div>
+    <div class="stop"><span class="plate"><span class="pl">Số</span><span class="pn">2</span><span class="pl">Buổi 9–16</span></span><h3>Living in Saigon</h3><p>Market, food, Grab, landlord, phone, pharmacy.</p></div>
+    <div class="stop"><span class="plate"><span class="pl">Số</span><span class="pn">3</span><span class="pl">Buổi 17–24</span></span><h3>Tell &amp; ask</h3><p>Past and future, work, hobbies, weather, small talk.</p></div>
+    <div class="stop"><span class="plate"><span class="pl">Số</span><span class="pn">4</span><span class="pl">Buổi 25–30</span></span><h3>Tết &amp; graduation</h3><p>New Year wishes, problem solving, final talk, certificate.</p></div>
+  </div>
+</section>
+
+<section id="library">
+  <span class="kicker">Free mini library</span>
+  <h2>Six words the hẻm uses daily</h2>
+  <p>Tap a card to flip it.</p>
+  <div class="lib" id="lib">
+    <button class="flip" aria-pressed="false"><span class="in"><span class="face front"><span class="ph">Ơi!</span><span>Hey!</span><span class="tag">Calling someone</span></span><span class="face back"><span class="mean">Hey! / Excuse me!</span><p>Put it after a name or a person word to call them.</p><span class="ex">Em ơi! → calling a waiter</span></span></span></button>
+    <button class="flip" aria-pressed="false"><span class="in"><span class="face front"><span class="ph">Dạ</span><span>Polite yes</span><span class="tag">Politeness</span></span><span class="face back"><span class="mean">Yes / I'm listening</span><p>Start with dạ, end with ạ, to anyone older than you.</p><span class="ex">Dạ, em hiểu rồi ạ.</span></span></span></button>
+    <button class="flip" aria-pressed="false"><span class="in"><span class="face front"><span class="ph">Bao nhiêu tiền?</span><span>How much?</span><span class="tag">Market</span></span><span class="face back"><span class="mean">How much is it?</span><p>Add vậy and the person word at the end. It sounds friendlier.</p><span class="ex">Bao nhiêu tiền vậy chị?</span></span></span></button>
+    <button class="flip" aria-pressed="false"><span class="in"><span class="face front"><span class="ph">Bớt chút đi chị!</span><span>A little discount?</span><span class="tag">Bargaining</span></span><span class="face back"><span class="mean">Give me a small discount!</span><p>Smile when you say it. Bargain at the market, not in the mall.</p><span class="ex">Mắc quá! Bớt chút đi chị.</span></span></span></button>
+    <button class="flip" aria-pressed="false"><span class="in"><span class="face front"><span class="ph">Quẹo trái</span><span>Turn left</span><span class="tag">Grab &amp; directions</span></span><span class="face back"><span class="mean">Turn left / turn right</span><p>Saigon says quẹo. In the North you will hear rẽ.</p><span class="ex">Tới hẻm này quẹo phải nha anh.</span></span></span></button>
+    <button class="flip" aria-pressed="false"><span class="in"><span class="face front"><span class="ph">Ăn cơm chưa?</span><span>Eaten yet?</span><span class="tag">Neighbours</span></span><span class="face back"><span class="mean">Have you eaten? = hello, I care</span><p>Not an invitation. Just answer politely.</p><span class="ex">Dạ, rồi ạ. / Dạ, chưa ạ.</span></span></span></button>
+  </div>
+  <div class="lib-cta">
+    <p>Want more? Play the full Lesson 1 app: phrase cards, tone detective, who-do-I-call, sentence builder.</p>
+    <a class="btn red" href="lesson-1.html">Open Lesson 1</a>
+  </div>
+</section>
+
+<section id="watch">
+  <span class="kicker">Watch &amp; learn · @hemtalk</span>
+  <h2>Hẻm Talk on your feed</h2>
+  <div class="wall">
+    <a class="tile t1" href="#watch"><span class="pf">TikTok</span><span class="handle">@hemtalk</span><span class="series">"Hẻm of the week": one real alley phrase in 30 seconds</span><span class="soon">Coming soon</span></a>
+    <a class="tile t2" href="#watch"><span class="pf">Threads</span><span class="handle">@hemtalk</span><span class="series">"1 câu mỗi ngày": one sentence a day, with tones explained</span><span class="soon">Coming soon</span></a>
+    <a class="tile t3" href="#watch"><span class="pf">Instagram</span><span class="handle">@hemtalk</span><span class="series">"Ơi! word of the day" Reels + carousel cheat sheets</span><span class="soon">Coming soon</span></a>
+    <a class="tile t4" href="#watch"><span class="pf">YouTube</span><span class="handle">@hemtalk</span><span class="series">Full mini lessons and street role-plays, 8–12 min</span><span class="soon">Coming soon</span></a>
+  </div>
+  <div class="episodes">
+    <div class="ep"><span class="no">Episode 1</span><span class="t">Ma, mà, mả, mã, má, mạ</span><p>Six marks, five Saigon tones, one hand gesture each.</p></div>
+    <div class="ep"><span class="no">Episode 2</span><span class="t">Why Vietnamese ask your age</span><p>Anh, chị, em in 60 seconds.</p></div>
+    <div class="ep"><span class="no">Episode 3</span><span class="t">Mosquitoes, please</span><p>muối vs muỗi, and other tone accidents.</p></div>
+  </div>
+</section>
+
+<section id="kieu">
+  <span class="kicker">Your teacher</span>
+  <div class="teacher">
+    <div class="polaroid" aria-label="Photo of Kiều, coming soon"><div class="pic">K</div><span class="cap">Kiều, Sài Gòn</span></div>
+    <div class="bio">
+      <h2>Chào bạn, mình là Kiều!</h2>
+      <p>I grew up in Nha Trang and live in Saigon. By day I'm a Project Manager at a global marketing agency, working with colleagues from all over the world. On the side, I teach Vietnamese, because nothing beats the moment someone orders their first cà phê sữa đá without switching to English.</p>
+      <p>I teach like I run projects: a clear route, checkpoints, and a recording of you on day 1 and day 30 so you can hear how far you've come.</p>
+      <p class="hand">Bạn không cần nói đúng. Bạn cần nói. You don't need to be right. You need to speak.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <span class="kicker">Questions</span>
+  <h2>Hỏi nhanh, đáp gọn</h2>
+  <div class="faq">
+    <details><summary>Why the Saigon accent?</summary><p>It is what you hear every day here. You speak the Saigon way and write with standard spelling, so you are understood anywhere in Vietnam.</p></details>
+    <details><summary>I've lived here for years. Too late?</summary><p>No. You already know more than you think. We start from the words you've picked up and fix the tones first.</p></details>
+    <details><summary>Can my family or colleagues join?</summary><p>Yes. Groups of 2–4 people who live or work together learn fastest, because you practise together every day.</p></details>
+    <details><summary>What do I need?</summary><p>Your own phone or laptop, headphones and a quiet spot. One person per device, so Kiều can hear and correct each of you.</p></details>
+    <details><summary>What if I miss a lesson?</summary><p>You keep the slides and the practice app for every lesson. Ask about rescheduling when you book.</p></details>
+    <details><summary>Do you teach 1-on-1?</summary><p>Yes, online. Message Kiều with your goals and available evenings.</p></details>
+  </div>
+</section>
+
+</div>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--sign-yellow)">Ghé hẻm · Drop by</span>
+    <h2>Book your free 30-minute lesson</h2>
+    <p class="lede">Send your name, how long you've lived in Vietnam, and your best evenings.</p>
+    <div class="contact-grid">
+      <div class="cbox"><span class="k">Zalo / WhatsApp</span><span class="v" id="c1">[Your number]</span><button type="button" data-copy="c1">Copy</button></div>
+      <div class="cbox"><span class="k">Email</span><span class="v" id="c2">[Your email]</span><button type="button" data-copy="c2">Copy</button></div>
+      <div class="cbox"><span class="k">All socials</span><span class="v" id="c3">@hemtalk</span><button type="button" data-copy="c3">Copy</button></div>
+    </div>
+    <div class="foot"><span>Hẻm Talk · Học Tiếng Việt cùng Kiều</span><span>Made in a Saigon hẻm</span></div>
+  </div>
+</section>
+
+<script>
+document.getElementById("lib").addEventListener("click", function(e){
+  var c = e.target.closest(".flip"); if (!c) return;
+  var on = c.classList.toggle("on"); c.setAttribute("aria-pressed", on ? "true" : "false");
+});
+document.querySelectorAll("[data-copy]").forEach(function(b){
+  b.addEventListener("click", function(){
+    var el = document.getElementById(b.getAttribute("data-copy")), t = el.textContent.trim();
+    var ok = function(){ b.textContent = "Copied"; setTimeout(function(){ b.textContent = "Copy"; }, 1500); };
+    var sel = function(){ var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; };
+    try { navigator.clipboard.writeText(t).then(ok, sel); } catch(err){ sel(); }
+  });
+});
+</script>
+
+</body>
+</html>

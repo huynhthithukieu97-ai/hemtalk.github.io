@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Practice app for Lesson 1: phrases, tones, pronouns, letter traps, sentence builder.">
+<meta property="og:title" content="Hẻm Talk · Lesson 1 practice">
+<meta property="og:description" content="Practice app for Lesson 1: phrases, tones, pronouns, letter traps, sentence builder.">
+<meta property="og:type" content="website">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Luyện Buổi 1 · Kiều</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one deliberate look — lantern-night teal ground, paper practice card in the middle, mode tabs above. Single theme by choice. */
+:root{
+  --night:#0B3836; --night-2:#072523; --paper:#FDF4E3; --paper-2:#F7E9CE; --paper-3:#F0DDBC;
+  --ink:#0B3836; --text:#123330; --soft:#4F6F6A; --coral:#E24E36; --coral-d:#B8361F; --gold:#E8B03A; --jade:#2E8B7A;
+  --on-night:#FDF4E3; --on-night-soft:rgba(253,244,227,.68); --line:rgba(253,244,227,.16);
+  --display:"Baloo 2","Be Vietnam Pro",system-ui,sans-serif;
+  --body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:radial-gradient(900px 420px at 50% -10%,#14514B 0%,transparent 62%),linear-gradient(180deg,var(--night),var(--night-2));background-color:var(--night-2);color:var(--on-night);font-family:var(--body);font-size:15px;line-height:1.5}
+.shell{max-width:760px;margin:0 auto;padding-inline:16px;padding-block:0 32px;display:flex;flex-direction:column;gap:14px}
+.lanterns{display:flex;justify-content:center;gap:clamp(18px,6vw,46px);height:42px;padding-top:8px;position:relative}
+.lanterns::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:linear-gradient(90deg,transparent,rgba(232,176,58,.45) 15%,rgba(232,176,58,.45) 85%,transparent)}
+.lan{width:14px;height:20px;border-radius:7px/46%;background:var(--coral);transform-origin:50% -10px;animation:sway 5.5s ease-in-out infinite}
+.lan:nth-child(even){background:var(--gold);animation-delay:-2s}
+@keyframes sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.brand{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,6vw,2.6rem);line-height:1.05;margin:2px 0 0;color:var(--on-night)}
+.xp{display:flex;gap:8px}
+.pill{border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:.82rem;color:var(--on-night-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill b{color:var(--gold);font-family:var(--display);font-size:1rem}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.tab{flex:none;font-family:var(--body);font-size:.86rem;font-weight:600;color:var(--on-night-soft);background:transparent;border:1px solid var(--line);border-radius:99px;padding:8px 14px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.card{background:var(--paper);color:var(--text);border-radius:22px;padding:clamp(18px,4vw,30px);box-shadow:0 18px 50px -18px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:16px;min-height:380px}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--coral-d)}
+.hint{font-size:.9rem;color:var(--soft)}
+.prog{height:5px;border-radius:9px;background:var(--paper-3);overflow:hidden}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--coral));transition:width .25s ease}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{font-family:var(--body);font-weight:600;font-size:.95rem;border-radius:14px;padding:11px 16px;cursor:pointer;border:1.5px solid transparent;background:var(--paper-2);color:var(--ink)}
+.btn:hover{background:var(--paper-3)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.primary:hover{background:#12514C}
+.btn.ghost{background:transparent;border-color:var(--paper-3)}
+.btn:disabled{opacity:.45;cursor:default}
+.big{font-family:var(--display);font-weight:800;color:var(--ink);font-size:clamp(1.9rem,7vw,3rem);line-height:1.1;text-wrap:balance}
+.mid{font-family:var(--display);font-weight:700;color:var(--ink);font-size:clamp(1.25rem,4.4vw,1.7rem);line-height:1.2;text-wrap:balance}
+.flip{background:var(--paper-2);border-radius:18px;padding:26px 20px;min-height:170px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px;cursor:pointer;border:0;width:100%;font-family:var(--body);color:var(--text)}
+.flip .back{font-size:1.05rem;color:var(--soft)}
+.opts{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.opt{font-family:var(--body);font-size:1rem;font-weight:600;text-align:left;padding:12px 14px;border-radius:14px;border:1.5px solid var(--paper-3);background:var(--paper);color:var(--ink);cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.opt small{font-weight:500;color:var(--soft);font-size:.8rem}
+.opt:hover:not(:disabled){background:var(--paper-2)}
+.opt.ok{background:#DCEFE8;border-color:var(--jade)}
+.opt.no{background:#FBE1DA;border-color:var(--coral)}
+.opt:disabled{cursor:default}
+.fb{border-radius:14px;padding:12px 14px;font-size:.95rem;line-height:1.5}
+.fb.ok{background:#DCEFE8;color:#134B40}
+.fb.no{background:#FBE1DA;color:#7A2414}
+.fb b{font-family:var(--display)}
+.slots{min-height:58px;background:var(--paper-2);border-radius:14px;padding:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tok{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--ink);background:var(--paper);border:1.5px solid var(--paper-3);border-radius:12px;padding:6px 12px;cursor:pointer}
+.tok.used{opacity:.25;cursor:default}
+.slots .tok{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.done{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;flex:1}
+.score{font-family:var(--display);font-weight:800;font-size:3.4rem;color:var(--coral-d);line-height:1;font-variant-numeric:tabular-nums}
+.tonekey{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:6px}
+.foot{font-size:.8rem;color:var(--on-night-soft);text-align:center}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="shell">
+  <div class="lanterns" aria-hidden="true"><i class="lan"></i><i class="lan"></i><i class="lan"></i><i class="lan"></i><i class="lan"></i><i class="lan"></i></div>
+  <div class="top">
+    <div>
+      <div class="brand">Học Tiếng Việt cùng Kiều · Buổi 1</div>
+      <h1>Chào anh, chào chị!</h1>
+    </div>
+    <div class="xp">
+      <span class="pill">XP <b id="xp">0</b></span>
+      <span class="pill">Streak <b id="streak">0</b></span>
+    </div>
+  </div>
+  <div class="tabs" role="tablist" id="tabs">
+    <button class="tab" role="tab" data-m="cards" aria-selected="true">Thẻ nhớ · Phrases</button>
+    <button class="tab" role="tab" data-m="tones" aria-selected="false">Thám tử thanh · Tones</button>
+    <button class="tab" role="tab" data-m="who" aria-selected="false">Gọi sao? · Pronouns</button>
+    <button class="tab" role="tab" data-m="letters" aria-selected="false">Bẫy chữ · Letters</button>
+    <button class="tab" role="tab" data-m="build" aria-selected="false">Xếp câu · Build</button>
+  </div>
+  <main class="card" id="card" aria-live="polite"></main>
+  <p class="foot">10 phút mỗi ngày · 10 minutes a day. Your progress stays on this device.</p>
+</div>
+
+<script>
+(function(){
+var TONES = [
+  {k:"ngang", m:"a", d:"flat →"},
+  {k:"huyền", m:"à", d:"low fall ↘"},
+  {k:"hỏi", m:"ả", d:"dip-rise ↘↗"},
+  {k:"ngã", m:"ã", d:"broken rise ↗"},
+  {k:"sắc", m:"á", d:"high rise ↗"},
+  {k:"nặng", m:"ạ", d:"heavy drop ↓"}
+];
+var DATA = {
+ cards: [
+  ["Chào anh!","Hello! (to an older man)"],
+  ["Chào chị!","Hello! (to an older woman)"],
+  ["Em chào cô ạ.","Hello. (polite, to a woman your parents' age)"],
+  ["Dạ.","Yes / I'm listening. (polite)"],
+  ["Em tên là …","My name is … (to someone older)"],
+  ["Anh tên gì ạ?","What's your name? (to an older man)"],
+  ["Em là người Myanmar.","I'm from Myanmar."],
+  ["Chị là người nước nào?","Which country are you from? (to an older woman)"],
+  ["Em ở Việt Nam ba năm rồi.","I've been in Vietnam for three years."],
+  ["Em sống ở Sài Gòn.","I live in Saigon."],
+  ["Cảm ơn chú ạ.","Thank you. (to a man your parents' age)"],
+  ["Xin lỗi.","Sorry. / Excuse me."],
+  ["Em không hiểu.","I don't understand."],
+  ["Nói lại được không ạ?","Could you say that again?"],
+  ["Nói chậm chút được không ạ?","Could you speak a bit slower?"],
+  ["Cái này tiếng Việt nói sao?","How do you say this in Vietnamese?"],
+  ["Một chút thôi.","Just a little."],
+  ["Hẹn gặp lại!","See you again!"]
+ ],
+ tones: [
+  ["chào","huyền","hello"],["anh","ngang","older brother / you"],["chị","nặng","older sister / you"],["chú","sắc","uncle / you"],
+  ["tên","ngang","name"],["là","huyền","am / is"],["người","huyền","person"],["Việt","nặng","Vietnam(ese)"],
+  ["cảm","hỏi","feel (cảm ơn = thanks)"],["dạ","nặng","polite yes"],["muối","sắc","salt"],["muỗi","ngã","mosquito"],
+  ["bàn","huyền","table"],["bạn","nặng","friend"],["bán","sắc","sell"],["ở","hỏi","at / live"],
+  ["sữa","ngã","milk"],["đá","sắc","ice"],["phở","hỏi","phở"],["lỗi","ngã","mistake (xin lỗi = sorry)"],
+  ["hiểu","hỏi","understand"],["chậm","nặng","slow"],["nói","sắc","speak"],["rồi","huyền","already"]
+ ],
+ who: [
+  {q:"The security guard in your building. A man around 55.", a:"chú", why:"Call him <b>chú</b>, call yourself <b>con</b>. Polite and warm."},
+  {q:"The woman selling bánh mì. She looks around 35, a bit older than you.", a:"chị", why:"<b>chị</b> is the safest word for an adult woman. You are <b>em</b>."},
+  {q:"A waiter, around 20. Clearly younger than you.", a:"em", why:"Younger people are <b>em</b>. You are <b>anh</b> (man) or <b>chị</b> (woman)."},
+  {q:"Your neighbour. A woman around 60.", a:"cô", why:"Your parents' age: <b>cô</b>. You are <b>con</b> (very common in Saigon)."},
+  {q:"Your neighbour's grandmother, around 80.", a:"bà", why:"Grandparent age: <b>bà</b> (woman), <b>ông</b> (man). You are <b>con</b> or <b>cháu</b>. Add <b>ạ</b>!"},
+  {q:"Your manager. A man around 40.", a:"anh", why:"Older man, not your parents' age: <b>anh</b>. You are <b>em</b>."},
+  {q:"A Grab driver. A man around 50.", a:"chú", why:"Around your parents' age: <b>chú</b>. If unsure, <b>anh</b> is also fine. Never <b>em</b>."},
+  {q:"A formal meeting with people you don't know. What do you call YOURSELF?", a:"tôi", why:"<b>tôi</b> is the formal, neutral \"I\". Good for meetings, cold with friends and neighbours."},
+  {q:"A woman at a shop. You really can't tell her age.", a:"chị", why:"When unsure, <b>chị</b> for a woman, <b>anh</b> for a man. Never guess <b>em</b> for an adult."},
+  {q:"A new colleague. A woman around 24, younger than you.", a:"em", why:"Younger colleague: <b>em</b>. She calls you <b>anh</b> or <b>chị</b>."}
+ ],
+ whoOpts:["anh","chị","em","cô","chú","bà","tôi"],
+ letters: [
+  {l:"đ", ex:"đi (go)", a:"like English d", o:["like English d","like English th","like y"]},
+  {l:"d", ex:"da (skin)", a:"like y (in Saigon)", o:["like English d","like y (in Saigon)","like ch"]},
+  {l:"gi", ex:"gì (what)", a:"like y (in Saigon)", o:["like g + i","like j in jam","like y (in Saigon)"]},
+  {l:"x", ex:"xin (please)", a:"like s", o:["like ks","like s","like z"]},
+  {l:"ph", ex:"phở", a:"like f", o:["like p + h","like f","like b"]},
+  {l:"nh", ex:"nhà (house)", a:"like ny in canyon", o:["like n + h","like ny in canyon","like ng"]},
+  {l:"ng", ex:"ngủ (sleep)", a:"like ng in singer, at the start", o:["like n + g","like ng in singer, at the start","like j"]},
+  {l:"th", ex:"thôi (only)", a:"t with a puff of air", o:["like th in think","t with a puff of air","like d"]},
+  {l:"tr", ex:"trà (tea)", a:"like ch, tongue curled back", o:["like t + r","like ch, tongue curled back","like j"]},
+  {l:"kh", ex:"không (no)", a:"like ch in Scottish loch", o:["like k","like ch in Scottish loch","like h"]},
+  {l:"ư", ex:"người (person)", a:"u with smiling lips", o:["like u in you","u with smiling lips","like i"]},
+  {l:"ơ", ex:"ơn (favour)", a:"like u in fur", o:["like o in go","like u in fur","like a in cat"]}
+ ],
+ build: [
+  {en:"Hello, cô. (polite)", w:["Em","chào","cô","ạ"]},
+  {en:"I'm from Myanmar.", w:["Em","là","người","Myanmar"]},
+  {en:"What's your name? (to an older man)", w:["Anh","tên","gì","ạ"], p:"?"},
+  {en:"Which country are you from? (to an older woman)", w:["Chị","là","người","nước","nào"], p:"?"},
+  {en:"I've been in Vietnam for three years.", w:["Em","ở","Việt","Nam","ba","năm","rồi"]},
+  {en:"I don't understand.", w:["Em","không","hiểu"]},
+  {en:"I live in Saigon.", w:["Em","sống","ở","Sài","Gòn"]},
+  {en:"Yes, thank you, chú.", w:["Dạ","cảm","ơn","chú","ạ"]}
+ ]
+};
+
+var S = {xp:0, streak:0, best:{}, known:{}};
+try { var raw = localStorage.getItem("kieu-b1-app"); if (raw) { var o = JSON.parse(raw); if (o && typeof o === "object") S = Object.assign(S, o); } } catch(e){}
+function save(){ try { localStorage.setItem("kieu-b1-app", JSON.stringify(S)); } catch(e){} }
+function hud(){ document.getElementById("xp").textContent = S.xp; document.getElementById("streak").textContent = S.streak; }
+function gain(ok){ if (ok){ S.xp += 10; S.streak += 1; } else { S.streak = 0; } save(); hud(); }
+function shuffle(a){ a = a.slice(); for (var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+function el(h){ var d=document.createElement("div"); d.innerHTML=h; return d; }
+var card = document.getElementById("card");
+
+/* Vietnamese voice, if the device has one */
+var viVoice = null;
+function pickVoice(){ try { var v = speechSynthesis.getVoices(); viVoice = v.find(function(x){ return /^vi/i.test(x.lang); }) || null; } catch(e){ viVoice = null; } }
+if ("speechSynthesis" in window){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function say(t){ if (!viVoice) return; try { speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(t.replace("…","")); u.voice = viVoice; u.lang = viVoice.lang; u.rate = .8; speechSynthesis.speak(u); } catch(e){} }
+function sayBtn(t){ return viVoice ? '<button class="btn ghost" data-say="'+t.replace(/"/g,"&quot;")+'">Nghe · Listen</button>' : ''; }
+card.addEventListener("click", function(e){ var b = e.target.closest("[data-say]"); if (b){ e.stopPropagation(); say(b.getAttribute("data-say")); } });
+
+function finish(mode, right, total, again){
+  var pct = Math.round(right/total*100);
+  if (!S.best[mode] || pct > S.best[mode]) S.best[mode] = pct; save();
+  var msg = pct===100 ? "Giỏi quá! Perfect." : pct>=70 ? "Tốt lắm! Nearly there." : "Không sao! Try again tomorrow.";
+  card.innerHTML = '<div class="done"><div class="eyebrow">Xong rồi · Done</div><div class="score">'+right+' / '+total+'</div><div class="mid">'+msg+'</div><p class="hint">Best: '+S.best[mode]+'%</p><button class="btn primary" id="again">Làm lại · Again</button></div>';
+  document.getElementById("again").onclick = again;
+}
+function bar(i,n){ return '<div class="prog"><i style="width:'+(i/n*100)+'%"></i></div>'; }
+
+/* 1. Flashcards */
+function cards(){
+  var deck = shuffle(DATA.cards), i = 0, right = 0, flipped = false;
+  function draw(){
+    if (i >= deck.length) return finish("cards", right, deck.length, cards);
+    var c = deck[i];
+    card.innerHTML = '<div class="eyebrow">Thẻ nhớ · '+(i+1)+' / '+deck.length+'</div>'+bar(i,deck.length)+
+      '<button class="flip" id="flip"><span class="big">'+c[0]+'</span><span class="back" id="back">'+(flipped? c[1] : "Tap to see the meaning")+'</span></button>'+
+      '<div class="row">'+sayBtn(c[0])+'</div>'+
+      '<div class="row"><button class="btn" id="no" '+(flipped?'':'disabled')+'>Chưa nhớ · Not yet</button><button class="btn primary" id="yes" '+(flipped?'':'disabled')+'>Biết rồi · I know it</button></div>'+
+      '<p class="hint">Say it out loud before you flip. Hand moving with the tones!</p>';
+    document.getElementById("flip").onclick = function(){ flipped = true; draw(); };
+    document.getElementById("yes").onclick = function(){ right++; S.known[c[0]] = 1; gain(true); i++; flipped=false; draw(); };
+    document.getElementById("no").onclick = function(){ delete S.known[c[0]]; save(); deck.push(c); i++; flipped=false; draw(); };
+  }
+  draw();
+}
+
+/* 2. Tone detective */
+function tones(){
+  var list = shuffle(DATA.tones).slice(0,12), i = 0, right = 0;
+  function draw(){
+    if (i >= list.length) return finish("tones", right, list.length, tones);
+    var t = list[i];
+    card.innerHTML = '<div class="eyebrow">Thám tử thanh · '+(i+1)+' / '+list.length+'</div>'+bar(i,list.length)+
+      '<div style="text-align:center;display:flex;flex-direction:column;gap:6px"><span class="big" style="font-size:clamp(2.6rem,10vw,4rem)">'+t[0]+'</span><span class="hint">'+t[2]+'</span></div>'+
+      '<div class="row" style="justify-content:center">'+sayBtn(t[0])+'</div>'+
+      '<p class="hint" style="text-align:center">Which tone mark does it carry?</p>'+
+      '<div class="opts tonekey" id="o">'+TONES.map(function(x){ return '<button class="opt" data-k="'+x.k+'"><span>'+x.m+' · '+x.k+'</span><small>'+x.d+'</small></button>'; }).join("")+'</div><div id="fb"></div>';
+    document.getElementById("o").onclick = function(e){
+      var b = e.target.closest(".opt"); if (!b) return;
+      var ok = b.getAttribute("data-k") === t[1];
+      [].forEach.call(this.querySelectorAll(".opt"), function(x){ x.disabled = true; if (x.getAttribute("data-k")===t[1]) x.classList.add("ok"); });
+      if (!ok) b.classList.add("no"); else right++;
+      gain(ok);
+      var extra = (t[1]==="hỏi"||t[1]==="ngã") ? " In Saigon, hỏi and ngã sound the same. You only see the difference in writing." : "";
+      document.getElementById("fb").innerHTML = '<div class="fb '+(ok?'ok':'no')+'">'+(ok?'Đúng rồi! ':'Chưa đúng. ')+'<b>'+t[0]+'</b> has thanh <b>'+t[1]+'</b>.'+extra+'</div><div class="row" style="margin-top:10px"><button class="btn primary" id="nx">Tiếp · Next</button></div>';
+      document.getElementById("nx").onclick = function(){ i++; draw(); };
+    };
+  }
+  draw();
+}
+
+/* 3. Who do I call? */
+function who(){
+  var list = shuffle(DATA.who), i = 0, right = 0;
+  function draw(){
+    if (i >= list.length) return finish("who", right, list.length, who);
+    var q = list[i];
+    card.innerHTML = '<div class="eyebrow">Gọi sao cho đúng? · '+(i+1)+' / '+list.length+'</div>'+bar(i,list.length)+
+      '<div class="mid">'+q.q+'</div><p class="hint">'+(q.a==="tôi"?"Pick one word.":"What do you call them?")+'</p>'+
+      '<div class="opts" id="o">'+DATA.whoOpts.map(function(x){ return '<button class="opt" data-k="'+x+'">'+x+'</button>'; }).join("")+'</div><div id="fb"></div>';
+    document.getElementById("o").onclick = function(e){
+      var b = e.target.closest(".opt"); if (!b) return;
+      var ok = b.getAttribute("data-k") === q.a;
+      [].forEach.call(this.querySelectorAll(".opt"), function(x){ x.disabled = true; if (x.getAttribute("data-k")===q.a) x.classList.add("ok"); });
+      if (!ok) b.classList.add("no"); else right++;
+      gain(ok);
+      document.getElementById("fb").innerHTML = '<div class="fb '+(ok?'ok':'no')+'">'+(ok?'Đúng rồi! ':'Chưa đúng. ')+q.why+'</div><div class="row" style="margin-top:10px"><button class="btn primary" id="nx">Tiếp · Next</button></div>';
+      document.getElementById("nx").onclick = function(){ i++; draw(); };
+    };
+  }
+  draw();
+}
+
+/* 4. Letter traps */
+function letters(){
+  var list = shuffle(DATA.letters), i = 0, right = 0;
+  function draw(){
+    if (i >= list.length) return finish("letters", right, list.length, letters);
+    var q = list[i];
+    card.innerHTML = '<div class="eyebrow">Bẫy chữ · '+(i+1)+' / '+list.length+'</div>'+bar(i,list.length)+
+      '<div style="text-align:center;display:flex;flex-direction:column;gap:4px"><span class="big" style="font-size:clamp(3rem,12vw,4.6rem);color:var(--coral-d)">'+q.l+'</span><span class="hint">as in <b style="color:var(--ink)">'+q.ex+'</b></span></div>'+
+      '<div class="row" style="justify-content:center">'+sayBtn(q.ex.split(" (")[0])+'</div>'+
+      '<p class="hint" style="text-align:center">Forget English. How does it sound in Vietnamese?</p>'+
+      '<div class="opts" id="o">'+shuffle(q.o).map(function(x){ return '<button class="opt" data-k="'+x+'">'+x+'</button>'; }).join("")+'</div><div id="fb"></div>';
+    document.getElementById("o").onclick = function(e){
+      var b = e.target.closest(".opt"); if (!b) return;
+      var ok = b.getAttribute("data-k") === q.a;
+      [].forEach.call(this.querySelectorAll(".opt"), function(x){ x.disabled = true; if (x.getAttribute("data-k")===q.a) x.classList.add("ok"); });
+      if (!ok) b.classList.add("no"); else right++;
+      gain(ok);
+      document.getElementById("fb").innerHTML = '<div class="fb '+(ok?'ok':'no')+'">'+(ok?'Đúng rồi! ':'Chưa đúng. ')+'<b>'+q.l+'</b> sounds '+q.a+'.</div><div class="row" style="margin-top:10px"><button class="btn primary" id="nx">Tiếp · Next</button></div>';
+      document.getElementById("nx").onclick = function(){ i++; draw(); };
+    };
+  }
+  draw();
+}
+
+/* 5. Sentence builder */
+function build(){
+  var list = shuffle(DATA.build), i = 0, right = 0;
+  function draw(){
+    if (i >= list.length) return finish("build", right, list.length, build);
+    var q = list[i], pool = shuffle(q.w.map(function(w,k){ return {w:w,k:k}; })), picked = [], checked = false;
+    function paint(){
+      card.innerHTML = '<div class="eyebrow">Xếp câu · '+(i+1)+' / '+list.length+'</div>'+bar(i,list.length)+
+        '<div class="mid">'+q.en+'</div><p class="hint">Tap the words in the right order. Tap a word in the box to take it back.</p>'+
+        '<div class="slots" id="slots">'+picked.map(function(p,idx){ return '<button class="tok" data-r="'+idx+'">'+p.w+'</button>'; }).join("")+'</div>'+
+        '<div class="row" id="pool">'+pool.map(function(p,idx){ var used = picked.indexOf(p)>-1; return '<button class="tok'+(used?' used':'')+'" data-p="'+idx+'" '+(used?'disabled':'')+'>'+p.w+'</button>'; }).join("")+'</div>'+
+        '<div id="fb"></div>'+(checked?'':'<div class="row"><button class="btn primary" id="chk" '+(picked.length===q.w.length?'':'disabled')+'>Kiểm tra · Check</button></div>');
+      document.getElementById("pool").onclick = function(e){ var b=e.target.closest("[data-p]"); if(!b||checked) return; picked.push(pool[+b.getAttribute("data-p")]); paint(); };
+      document.getElementById("slots").onclick = function(e){ var b=e.target.closest("[data-r]"); if(!b||checked) return; picked.splice(+b.getAttribute("data-r"),1); paint(); };
+      if (!checked) document.getElementById("chk").onclick = function(){
+        checked = true;
+        var ans = q.w.join(" "), got = picked.map(function(p){ return p.w; }).join(" ");
+        var ok = ans === got; if (ok) right++; gain(ok);
+        paint();
+        document.getElementById("fb").innerHTML = '<div class="fb '+(ok?'ok':'no')+'">'+(ok?'Đúng rồi! ':'Gần đúng! The answer: ')+'<b>'+ans+(q.p||'.')+'</b></div>'+(viVoice?'<div class="row" style="margin-top:8px">'+sayBtn(ans)+'</div>':'')+'<div class="row" style="margin-top:10px"><button class="btn primary" id="nx">Tiếp · Next</button></div>';
+        document.getElementById("nx").onclick = function(){ i++; draw(); };
+      };
+    }
+    paint();
+  }
+  draw();
+}
+
+var MODES = {cards:cards, tones:tones, who:who, letters:letters, build:build};
+var tabs = document.getElementById("tabs");
+function open(m){
+  [].forEach.call(tabs.querySelectorAll(".tab"), function(t){ t.setAttribute("aria-selected", t.getAttribute("data-m")===m ? "true":"false"); });
+  try { localStorage.setItem("kieu-b1-mode", m); } catch(e){}
+  MODES[m]();
+}
+tabs.addEventListener("click", function(e){ var t = e.target.closest(".tab"); if (t) open(t.getAttribute("data-m")); });
+hud();
+var start = "cards"; try { var sm = localStorage.getItem("kieu-b1-mode"); if (sm && MODES[sm]) start = sm; } catch(e){}
+open(start);
+})();
+</script>
+
+</body>
+</html>
